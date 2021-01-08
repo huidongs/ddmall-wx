@@ -5,7 +5,9 @@
     "pages/auth/login/login",
     "pages/catalog/catalog",
     "pages/cart/cart",
-    "pages/auth/accountLogin/accountLogin"
+    "pages/auth/accountLogin/accountLogin",
+    "pages/auth/register/register",
+    "pages/auth/reset/reset"
   ],
   "window": {
     "backgroundTextStyle": "light",
