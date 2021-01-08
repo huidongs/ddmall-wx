@@ -1,12 +1,9 @@
-// pages/auth/login/login.js
+var api = require('../../../config/api.js');
+var util = require('../../../utils/util.js');
+var user = require('../../../utils/user.js');
+
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -42,25 +39,28 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  wxLogin:function (e) {
+    if(e.detail.userInfo == undefined ){
+      app.globalData.hasLogin = false;
+      util.showErrorToast('微信登录失败')
+      return;
+    }
+    user.checkLogin().catch(()=>{
+      user.loginByWeiXin(e.detail.userInfo).then((res)=>{
+        app.globalData.hasLogin = true;
+        wx.navigateBack({
+          delta: 1,
+        })
+      }).catch((err)=>{
+        app.globalData.hasLogin = false;
+        util.showErrorToast('微信登录失败');
+      });
+    });
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  accountLogin:function () {
+    wx.navigateTo({
+      url: '/pages/auth/accountLogin/accountLogin',
+    })
   }
+
 })
