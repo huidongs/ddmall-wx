@@ -41,8 +41,7 @@ Page({
         userInfo: userInfo,
         hasLogin: true
       });
-    }
-
+    } 
   },
   goLogin(){
     if(!this.data.hasLogin){

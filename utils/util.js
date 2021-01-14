@@ -66,7 +66,7 @@ function redirect(url) {
 }
 function showErrorToast(msg) {
   wx.showToast({
-    title: 'msg',
+    title: msg,
     image: '/static/images/icon_error.png'
   })
 }

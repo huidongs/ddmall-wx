@@ -46,13 +46,14 @@ function loginByWeiXin(userInfo) {
         code: res.code,
         userInfo: userInfo
       }, 'POST').then(res => {
+        console.log(res)
         if (res.errno === 0) {
           //存储用户信息
           wx.setStorageSync('userInfo', res.data.userInfo);
           wx.setStorageSync('token', res.data.token);
           resolve(res);
         } else {
-          reject(res);
+          reject(res); 
         }
       }).catch((err) => {
         reject(err);

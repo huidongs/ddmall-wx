@@ -1,3 +1,7 @@
+const api = require("../../../config/api");
+var util = require('../../../utils/util.js');
+var user = require('../../../utils/user.js');
+var app = getApp();
 // pages/auth/accountLogin/accountLogin.js
 Page({
 
@@ -5,7 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    username: '',
+    password: '',
+    code: '',
+    loginErrorCount: 0
   },
 
   /**
@@ -42,25 +49,80 @@ Page({
   onUnload: function () {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  accountLogin: function () {
+    var that = this;
+    if (this.data.username.length < 1 || this.data.password.length < 1) {
+      wx.showModal({
+        title: '错误信息',
+        content: '请输入用户名和密码',
+        showCancel: false
+      });
+      return false;
+    }
+    wx.request({
+      url: api.AuthLoginByAccount,
+      data: {
+        username: that.data.username,
+        password: that.data.password
+      },
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        if (res.data.erron == 0) {
+          that.setData({
+            loginErrorCount: 0
+          });
+          app.globalData.hasLogin = true;
+          wx.setStorageSync('userInfo', res.data.data.userInfo);
+          wx.setStorage({
+            data: res.data.data.token,
+            key: 'token',
+            success: function () {
+              wx.switchTab({
+                url: '/pages/ucenter/index/index'
+              });
+            }
+          })
+        } else {
+          that.setData({
+            loginErrorCount: that.data.loginErrorCount + 1
+          });
+          app.globalData.hasLogin = false;
+          util.showErrorToast('账户登录失败');
+        }
+      }
+    });
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  bindUsernameInput: function (e) {
+    this.setData({
+      username: e.detail.value
+    })
   },
+  bindCodeInput: function (e) {
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({
+      code: e.detail.value
+    });
+  },
+  clearInput: function (e) {
+    switch (e.currentTarget.id) {
+      case 'clear-username':
+        this.setData({
+          username: ''
+        });
+        break;
+      case 'clear-password':
+        this.setData({
+          password: ''
+        });
+        break;
+      case 'clear-code':
+        this.setData({
+          code: ''
+        });
+        break;
+    }
   }
 })
