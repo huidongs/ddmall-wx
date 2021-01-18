@@ -50,11 +50,6 @@ Page({
       });
       return false;
     }
-    wx.showModal({
-      title: '错误信息',
-      content: '此功能暂不可用',
-      showCancel: false
-    });
     wx.request({
       url: api.AuthRegisterCaptcha,
       data: {
