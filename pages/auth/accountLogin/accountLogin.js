@@ -90,7 +90,7 @@ Page({
             loginErrorCount: that.data.loginErrorCount + 1
           });
           app.globalData.hasLogin = false;
-          util.showErrorToast('账户登录失败');
+          util.showErrorToast(res.data.errmsg);
         }
       }
     });
@@ -100,8 +100,12 @@ Page({
       username: e.detail.value
     })
   },
+  bindPasswordInput: function(e){
+    this.setData({
+      password: e.detail.value
+    })
+  },
   bindCodeInput: function (e) {
-
     this.setData({
       code: e.detail.value
     });
