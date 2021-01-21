@@ -7,7 +7,9 @@
     "pages/cart/cart",
     "pages/auth/accountLogin/accountLogin",
     "pages/auth/register/register",
-    "pages/auth/reset/reset"
+    "pages/auth/reset/reset",
+    "pages/ucenter/about/about",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
