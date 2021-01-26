@@ -16,7 +16,7 @@ Page({
     banner: [],
     channel: [],
     coupon: [],
-    goodsCount: 0
+    goodsCount: 0 
   },
 
   onShareAppMessage: function() {
@@ -38,6 +38,8 @@ Page({
     let that = this;
     util.request(api.IndexUrl).then(function(res) {
       if (res.errno === 0) {
+        console.log("=======================")
+        console.log(res.data)
         that.setData({
           newGoods: res.data.newGoodsList,
           hotGoods: res.data.hotGoodsList,
