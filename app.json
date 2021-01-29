@@ -9,7 +9,8 @@
     "pages/auth/register/register",
     "pages/auth/reset/reset",
     "pages/ucenter/about/about",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/category/category"
   ],
   "window": {
     "backgroundTextStyle": "light",
