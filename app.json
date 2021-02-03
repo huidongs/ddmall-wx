@@ -10,7 +10,8 @@
     "pages/auth/reset/reset",
     "pages/ucenter/about/about",
     "pages/search/search",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/newGoods/newGoods"
   ],
   "window": {
     "backgroundTextStyle": "light",
