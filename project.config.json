@@ -70,6 +70,12 @@
         {
           "name": "pages/auth/register/register",
           "pathName": "pages/auth/register/register",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/newGoods/newGoods",
+          "pathName": "pages/newGoods/newGoods",
           "scene": null
         }
       ]

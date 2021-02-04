@@ -11,7 +11,9 @@
     "pages/ucenter/about/about",
     "pages/search/search",
     "pages/category/category",
-    "pages/newGoods/newGoods"
+    "pages/newGoods/newGoods",
+    "pages/brand/brand",
+    "pages/brandDetail/brandDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
