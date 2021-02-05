@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/ucenter/index/index",
     "pages/index/index",
+    "pages/ucenter/index/index",
     "pages/auth/login/login",
     "pages/catalog/catalog",
     "pages/cart/cart",
@@ -13,7 +13,9 @@
     "pages/category/category",
     "pages/newGoods/newGoods",
     "pages/brand/brand",
-    "pages/brandDetail/brandDetail"
+    "pages/brandDetail/brandDetail",
+    "pages/goods/goods",
+    "pages/groupon/grouponList/grouponList"
   ],
   "window": {
     "backgroundTextStyle": "light",
